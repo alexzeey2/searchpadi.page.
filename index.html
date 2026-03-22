@@ -384,6 +384,26 @@
             margin-top: 16px;
         }
 
+        /* ── SLIDER ── */
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px; height: 24px;
+            border-radius: 50%;
+            background: #fff;
+            border: 3px solid var(--purple);
+            cursor: pointer;
+            box-shadow: 0 0 12px rgba(124,58,237,0.5);
+        }
+        input[type=range]::-moz-range-thumb {
+            width: 24px; height: 24px;
+            border-radius: 50%;
+            background: #fff;
+            border: 3px solid var(--purple);
+            cursor: pointer;
+            box-shadow: 0 0 12px rgba(124,58,237,0.5);
+        }
+
         /* ── FAQ ── */
         .faq { display: flex; flex-direction: column; gap: 12px; }
 
@@ -570,7 +590,7 @@
     </h1>
 
     <p class="hero-sub">
-        Our AI promotes your products on Facebook and Instagram, and interested customers message you directly on WhatsApp — all in less than 24 hours.
+        Our AI promotes your products on Facebook, negotiates with every buyer automatically, and delivers serious customers with their WhatsApp numbers straight to your dashboard — starting from ₦3,200.
     </p>
 
     <div class="hero-actions">
@@ -656,15 +676,15 @@
         <div class="step">
             <div class="step-number">2</div>
             <div>
-                <div class="step-title">Pay ₦3,200 for a promotion</div>
-                <div class="step-desc">We run a targeted Facebook ad for your products, reaching customers specifically in your city who are looking for what you sell.</div>
+                <div class="step-title">Choose how many customers you want</div>
+                <div class="step-desc">Pick as few as 4 or as many as 300. At ₦800 per customer, you only pay for what you want. We run a targeted Facebook ad for your product, reaching real buyers in your city.</div>
             </div>
         </div>
         <div class="step">
             <div class="step-number">3</div>
             <div>
-                <div class="step-title">Customers contact you on WhatsApp</div>
-                <div class="step-desc">Interested customers go through a chat flow, drop their WhatsApp number, and their details land directly in your SearchPadi dashboard.</div>
+                <div class="step-title">Our AI negotiates with buyers for you</div>
+                <div class="step-desc">Every buyer goes through a smart chat flow where our AI shows your price, handles questions, and captures their WhatsApp number — all before you lift a finger.</div>
             </div>
         </div>
         <div class="step">
@@ -685,39 +705,66 @@
 
     <div class="pricing-card">
         <div class="pricing-badge">Campaign</div>
-        <div class="pricing-amount">₦3,200 <span>/ promotion</span></div>
-        <div class="pricing-desc">Minimum 4 interested customers with their WhatsApp numbers</div>
+
+        <!-- Customer slider calculator -->
+        <div style="margin-bottom:24px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:8px;">
+                <div>
+                    <div style="font-size:12px;color:var(--gray);margin-bottom:4px;">How many customers do you want?</div>
+                    <div style="font-family:'Clash Display',sans-serif;font-size:48px;font-weight:700;line-height:1;" id="customerCount">4</div>
+                </div>
+                <div style="text-align:right;">
+                    <div style="font-size:12px;color:var(--gray);margin-bottom:4px;">Total cost</div>
+                    <div style="font-family:'Clash Display',sans-serif;font-size:36px;font-weight:700;color:var(--purple-light);line-height:1;" id="totalCost">₦3,200</div>
+                </div>
+            </div>
+
+            <!-- Slider -->
+            <div style="position:relative;padding:10px 0;">
+                <input type="range" id="customerSlider" min="4" max="300" value="4" step="4"
+                    style="width:100%;-webkit-appearance:none;appearance:none;height:6px;border-radius:3px;outline:none;cursor:pointer;background:linear-gradient(to right, #7c3aed 0%, #7c3aed 1.35%, #2a2a3a 1.35%, #2a2a3a 100%);"
+                    oninput="updateSlider(this.value)">
+            </div>
+
+            <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--gray);margin-top:2px;">
+                <span>4 min</span>
+                <span>₦800 per customer</span>
+                <span>300 max</span>
+            </div>
+        </div>
+
+        <div class="pricing-desc" id="pricingDesc">Get 4 serious buyers with their WhatsApp numbers delivered to your dashboard</div>
 
         <ul class="pricing-features">
             <li>
                 <div class="pricing-check">
                     <svg width="10" height="10" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
                 </div>
-                Targeted Facebook ad in your city
+                Targeted Facebook ad reaching buyers in your city
             </li>
             <li>
                 <div class="pricing-check">
                     <svg width="10" height="10" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
                 </div>
-                Minimum 4 customer leads with WhatsApp numbers
+                AI assistant negotiates price with every buyer before handing them to you
             </li>
             <li>
                 <div class="pricing-check">
                     <svg width="10" height="10" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
                 </div>
-                Leads delivered to your dashboard instantly
+                Leads with full chat transcripts delivered to your dashboard instantly
             </li>
             <li>
                 <div class="pricing-check">
                     <svg width="10" height="10" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
                 </div>
-                Verified seller badge on your profile
+                Verified seller badge on your profile — builds buyer trust instantly
             </li>
             <li>
                 <div class="pricing-check">
                     <svg width="10" height="10" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
                 </div>
-                Registration is completely free
+                Registration is completely free — no monthly fees ever
             </li>
         </ul>
 
@@ -727,7 +774,7 @@
 
         <div class="pricing-guarantee">
             <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:1px"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-            <span>If you don't get at least 4 interested customers, we redo your promotion for free. No questions asked.</span>
+            <span>If you don't get at least 1 interested customer, we redo your promotion completely for free. No questions asked.</span>
         </div>
     </div>
 </section>
@@ -764,14 +811,14 @@
                 What if customers don't message me?
                 <div class="faq-icon">+</div>
             </div>
-            <div class="faq-a">If you don't receive at least 4 interested customer leads with their WhatsApp numbers, we redo your promotion completely for free. Your money is safe.</div>
+            <div class="faq-a">If you don't receive at least 1 interested customer lead with their WhatsApp number, we redo your promotion completely for free. Your money is 100% safe.</div>
         </div>
         <div class="faq-item">
             <div class="faq-q" onclick="toggleFaq(this)">
                 Is registration really free?
                 <div class="faq-icon">+</div>
             </div>
-            <div class="faq-a">Yes, completely free. Create your profile, list your products, and get a verified seller badge at no cost. You only pay ₦3,200 when you want to run a promotion.</div>
+            <div class="faq-a">Yes, completely free. Create your profile, list your products, and get a verified seller badge at no cost. You only pay ₦800 per customer when you want to run a promotion — minimum 4 customers (₦3,200).</div>
         </div>
     </div>
 </section>
@@ -822,6 +869,20 @@
 </footer>
 
 <script>
+    // Customer slider
+    function updateSlider(val) {
+        const count = parseInt(val);
+        const total = count * 800;
+        document.getElementById('customerCount').textContent = count;
+        document.getElementById('totalCost').textContent = '₦' + total.toLocaleString('en-NG');
+        document.getElementById('pricingDesc').textContent = `Get ${count} serious buyer${count > 1 ? 's' : ''} with their WhatsApp numbers delivered to your dashboard`;
+        // Update slider fill
+        const pct = ((count - 4) / (300 - 4)) * 100;
+        document.getElementById('customerSlider').style.background = `linear-gradient(to right, #7c3aed 0%, #7c3aed ${pct}%, #2a2a3a ${pct}%, #2a2a3a 100%)`;
+    }
+    // Init slider fill
+    updateSlider(4);
+
     // Slider swipe
     const slider = document.getElementById('slider');
     if (slider) {
